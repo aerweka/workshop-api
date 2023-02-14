@@ -10,9 +10,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "",
+                username: "",
                 email: "",
                 role: "",
+                branchAssigned: "central branch",
                 brancAccessId: []
             });
             expect(response.statusCode).toEqual(201);
@@ -25,9 +26,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "",
             }).send({
-                name: "",
+                username: "",
                 email: "",
                 role: "",
+                branchAssigned: "central branch",
                 brancAccessId: []
             });
             expect(response.statusCode).toEqual(401);
@@ -43,9 +45,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "",
+                username: "",
                 email: "",
                 role: "",
+                branchAssigned: "central branch",
                 brancAccessId: []
             });
             expect(response.statusCode).toEqual(201);
@@ -58,9 +61,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "",
+                username: "",
                 email: "",
                 role: "",
+                branchAssigned: "central branch",
                 brancAccessId: []
             });
             expect(response.statusCode).toEqual(403);
@@ -76,9 +80,10 @@ describe('Invite Controller', () => {
                 ).headers({
                     Authorization: "Bearer <token>",
                 }).send({
-                    name: "John Doe",
-                    email: "johndoe@gmail.com",
+                    username: "John Doe",
+                    email: "admin@examplemail.com",
                     role: "63eae28fc8f7e4e683532071",
+                    branchAssigned: "central branch",
                     brancAccessId: [
                         "63eae28fc8f7e4e683532071",
                         "63eae28fc8f7e4e683532071"
@@ -95,32 +100,34 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "John Doe",
-                email: "johndoe@gmail.com",
+                username: "John Doe",
+                email: "admin@examplemail.com",
                 role: "63eae28fc8f7e4e683532071",
+                branchAssigned: "central branch",
                 brancAccessId: []
             });
             expect(response.statusCode).toEqual(400);
             expect(response.message).toEqual(expect.stringContaining('branchAccessId'))
             expect(response._id).not.toBeUndefined();
         })
-        it('if user doesnt fill name', async () => {
+        it('if user doesnt fill username', async () => {
             const app = createApp()
             const response = await (
                 await request(app).post("/v1/users/invite")
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "",
-                email: "johndoe@gmail.com",
+                username: "",
+                email: "admin@examplemail.com",
                 role: "63eae28fc8f7e4e683532071",
+                branchAssigned: "central branch",
                 brancAccessId: [
                     "63eae28fc8f7e4e683532071",
                     "63eae28fc8f7e4e683532071"
                 ]
             });
             expect(response.statusCode).toEqual(400);
-            expect(response.message).toEqual(expect.stringContaining('name'))
+            expect(response.message).toEqual(expect.stringContaining('username'))
             expect(response._id).not.toBeUndefined();
         })
         it('if user doesnt fill email', async () => {
@@ -130,9 +137,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "John Doe",
+                username: "John Doe",
                 email: "",
                 role: "63eae28fc8f7e4e683532071",
+                branchAssigned: "central branch",
                 brancAccessId: [
                     "63eae28fc8f7e4e683532071",
                     "63eae28fc8f7e4e683532071"
@@ -149,9 +157,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "John Doe",
-                email: "johndoe@gmail.com",
+                username: "John Doe",
+                email: "admin@examplemail.com",
                 role: "",
+                branchAssigned: "central branch",
                 brancAccessId: [
                     "63eae28fc8f7e4e683532071",
                     "63eae28fc8f7e4e683532071"
@@ -171,9 +180,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "John Doe",
-                email: "johndoe@gmail.com",
+                username: "John Doe",
+                email: "admin@examplemail.com",
                 role: "63eae28fc8f7e4e683532071",
+                branchAssigned: "central branch",
                 brancAccessId: [
                     "63eae28fc8f7e4e683532071",
                     "63eae28fc8f7e4e683532071"
@@ -189,9 +199,10 @@ describe('Invite Controller', () => {
             ).headers({
                 Authorization: "Bearer <token>",
             }).send({
-                name: "John Doe",
-                email: "johndoe@gmail.com",
+                username: "John Doe",
+                email: "admin@examplemail.com",
                 role: "63eae28fc8f7e4e683532071",
+                branchAssigned: "central branch",
                 brancAccessId: [
                     "63eae28fc8f7e4e683532071",
                     "63eae28fc8f7e4e683532071"
