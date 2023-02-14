@@ -4,7 +4,10 @@ import Validatorjs from "validatorjs";
 export const validate = (body: any) => {
   const validation = new Validatorjs(body, {
     email: "required|email",
-    name: "required",
+    username: "required|string",
+    role: "required",
+    branchAssigned: "required|string",
+    branchAccess: "required|array"
   });
 
   if (validation.fails()) {

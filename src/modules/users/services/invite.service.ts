@@ -5,7 +5,8 @@ export class InviteUserService {
   constructor(db: DatabaseConnection) {
     this.db = db;
   }
-  public async handle() {
-    return {};
+  public async handle(body: any, dbSession: any) {
+    const result = await this.db.create(body)
+    return { _id: result._id };
   }
 }
